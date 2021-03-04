@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Movie from './components/Movie'
 
-const API_KEY = process.env.TMDB_KEY;
+const { REACT_APP_TMDB_KEY } = process.env;
 
-const MOVIES_API = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
+const MOVIES_API = `https://api.themoviedb.org/3/movie/popular?api_key=${REACT_APP_TMDB_KEY}&language=en-US&page=1`
 
-const SEARCH_API = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=`
+const SEARCH_API = `https://api.themoviedb.org/3/search/movie?api_key=${REACT_APP_TMDB_KEY}&query=`
 
 function App() {
   const [ movies, setMovies ] = useState([]);

@@ -1,7 +1,7 @@
 import React from 'react'
 
 const IMAGES_API = 'https://image.tmdb.org/t/p/w1280'
-const OMDB_API = process.env.OMDB_KEY;
+const OMDB_KEY = process.env.REACT_APP_OMDB_KEY;
 
 const setVoteClass = (vote) => {
     if (vote >= 8) {
@@ -16,7 +16,7 @@ const setVoteClass = (vote) => {
 
 const Movie = ({ title, release_date, backdrop_path, vote_average, vote_count }) => {
     const handleOnClick = () => {
-        fetch(`https://www.omdbapi.com/?apikey=${OMDB_API}&t="${title}"&y=${release_date}`)
+        fetch(`https://www.omdbapi.com/?apikey=${OMDB_KEY}&t="${title}"&y=${release_date}`)
         .then(res => res.json())
         .then(data => window.open(`https://www.imdb.com/title/${data.imdbID}`))
         .catch(err => console.log(err.message))
