@@ -16,9 +16,10 @@ const setVoteClass = (vote) => {
 
 const Movie = ({ title, release_date, backdrop_path, vote_average, vote_count }) => {
     const handleOnClick = () => {
-        fetch(`http://www.omdbapi.com/?apikey=${OMDB_API}&t="${title}"&y=${release_date}`)
+        fetch(`https://www.omdbapi.com/?apikey=${OMDB_API}&t="${title}"&y=${release_date}`)
         .then(res => res.json())
         .then(data => window.open(`https://www.imdb.com/title/${data.imdbID}`))
+        .catch(err => console.log(err.message))
     }
 
     return (
