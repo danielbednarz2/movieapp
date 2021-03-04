@@ -1,7 +1,7 @@
 import React from 'react'
 
 const IMAGES_API = 'https://image.tmdb.org/t/p/w1280'
-const OMDB_API = 'f2bc2564';
+const OMDB_API = process.env.OMDB_KEY;
 
 const setVoteClass = (vote) => {
     if (vote >= 8) {
