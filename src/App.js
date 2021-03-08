@@ -22,31 +22,28 @@ function App() {
     getMovies(MOVIES_API);
   }, [])
 
-  const handleOnSubmit = (e) => {
-    e.preventDefault();
-
-    if (searchValue) {
-      getMovies(SEARCH_API + searchValue);
-      setSearchValue('');
-    }
-
-  }
-
   const handleOnChange = (e) => {
     setSearchValue(e.target.value)
   }
+
+  useEffect(() => {
+    if (searchValue.trim()) {
+      getMovies(SEARCH_API + searchValue);
+    } else {
+      getMovies(MOVIES_API);
+    }
+  }, [searchValue])
+
 
   return (
     <>
     <header >
       <h1>Movie App</h1>
-      <form onSubmit={handleOnSubmit}>
         <input className="search" type="text" placeholder="Search..." value={searchValue} onChange={handleOnChange}/>
-      </form>
     </header>
     <div className="App">
-        {
-          movies.length > 0 && movies.map(movie => <Movie {...movie} key={movie.id}/> )
+        { movies.map(movie => 
+          <Movie {...movie} key={movie.id}/> )
         }
     </div>
     </>
