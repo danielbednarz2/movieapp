@@ -34,11 +34,14 @@ function App() {
     }
   }, [searchValue])
 
+  const resetSearchValue = () => {
+    setSearchValue('')
+  } 
 
   return (
     <>
-    <header >
-      <h1>Movie App</h1>
+    <header style={{'padding': '0 1.5em'}}>
+      <h1 onClick={resetSearchValue} style={{'cursor': 'pointer'}}>Movie App</h1>
         <input className="search" type="text" placeholder="Search..." value={searchValue} onChange={handleOnChange}/>
     </header>
     <div className="App">
